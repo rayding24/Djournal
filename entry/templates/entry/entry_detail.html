@@ -1,0 +1,16 @@
+{% extends 'entry/base.html' %}
+
+{% block content %}
+    <div class="entry">
+        {% if entry.published_date %}
+            <div class="date">
+                {{ entry.published_date }}
+            </div>
+        {% endif %}
+		{% if user.is_authenticated %}
+			<a class="btn btn-default" href="{% url 'entry_edit' pk=entry.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+		{% endif %}
+		<h1>{{ entry.title }}</h1>
+        <p>{{ entry.text|linebreaks }}</p>
+	</div>
+{% endblock %}
